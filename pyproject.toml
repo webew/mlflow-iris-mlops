@@ -1,0 +1,38 @@
+[project]
+name = "mlflow-iris-mlops"
+version = "0.1.0"
+description = "Classification Iris avec suivi d'expériences et registre de modèles MLflow"
+readme = "README.md"
+authors = [
+    { name = "webew", email = "fillion.bertrand@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "mlflow>=3.17.2",
+    "pandas>=3.1.0",
+    "python-dotenv>=1.2.4",
+    "scikit-learn>=1.9.1",
+]
+
+[project.scripts]
+train = "mlflow_iris_mlops.train:main"
+predict = "mlflow_iris_mlops.predict:main"
+
+[build-system]
+requires = ["uv_build>=0.11.29,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.3",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
